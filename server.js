@@ -12,7 +12,7 @@ app.post('/api/chat', async (req, res) => {
     const apiKey = process.env.GEMINI_API_KEY;
 
     if (!apiKey) {
-        return res.status(500).json({ error: 'API Key belum dipasang di server Render.' });
+        return res.status(500).json({ error: 'API Key belum dipasang di server Vercel.' });
     }
 
     try {
@@ -35,7 +35,5 @@ app.post('/api/chat', async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server Anime AI hidup di port ${PORT}`);
-});
+// KUNCI PERBAIKAN: Wajib di-export agar Vercel bisa menjalankan Express
+module.exports = app;
